@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проста Веб Сторінка</title>
+  <link rel="stylesheet" href="../static/style.css"> 
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1>КРИПТОГРАФІЯ - ТЕМА</h1>
+            <form method="POST" enctype="multipart/form-data">
+                <textarea id="textInput" name="text" placeholder="Введіть ваш текст тут..."></textarea>
+        
+                <label class="custom-file-upload">
+                  <input type="file" id="fileInput" name="file" />
+                  Завантажити файл
+                </label>
+                <div class="butons"> 
+                    <button type="submit" name="action" value="encrypt">Зашифрувати</button>
+                    <button type="submit" name="action" value="decrypt">Розшифрувати</button>
+                </div>
+                
+            </form> 
+        </div>   
+
+        <div class="conteiner_result" id="resultBox">
+            <h2>Результат</h2>
+
+            {% if encrypted %}
+                <p><strong>🔐 Зашифровано:</strong> {{ encrypted }}</p>
+            {% endif %}
+
+            {% if decrypted %}
+                <p><strong>🔓 Розшифровано:</strong> {{ decrypted }}</p>
+            {% endif %}
+
+            {% if file %}
+                <p><strong>📁 Файл:</strong> {{ file }}</p>
+            {% endif %}
+
+            {% if not encrypted and not decrypted and not file %}
+                <p>Будь ласка, введіть текст або завантажте файл.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
